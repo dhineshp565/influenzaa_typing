@@ -9,7 +9,7 @@ while read lines
 do 
 		sample=$(echo $lines|cut -f 1 -d ',')
         #using orfipy extract orf from consensus generated in influenza nano process with ATG as start codon with a minim length of 400 in nucleotide format
-		orfipy $1/${sample}_InfA.fasta --dna ${sample}_ORF.fasta --min 400 --outdir orfipy_res --start ATG
+		orfipy $1/${sample}_InfA.fasta --dna ${sample}_ORF.fasta --min 400 --outdir orfipy_res --start ATG --include-stop
         #if no ORF sequence found - create a orf file with no consensus headers
 		if [ $(wc -l < orfipy_res/"${sample}_ORF.fasta") == "0" ]
 		then 
